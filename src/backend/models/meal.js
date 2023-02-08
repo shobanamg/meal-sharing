@@ -60,10 +60,55 @@ const getLastMeal = async () => {
         });
 }
 
+const getMealById = async (id) => {
+    return await knex
+        .select()
+        .from('meal')
+        .where({id})
+            .catch(err => {
+                console.error(err);
+                throw err;
+            });
+}
+
+const updateMealById = async (id, meal) => {
+    return await knex('meal')
+        .where({id})
+        .update(meal)
+        .catch(err => {
+            console.error(err);
+            throw err;
+        });
+}
+
+const deleteMealById = async (id) => {
+    return await knex('meal')
+        .where({id})
+        .del()
+        .catch(err => {
+            console.error(err);
+            throw err;
+        });
+}
+
+const createMeal = async (meal) => {
+    return await knex('meal')
+        .insert(meal)
+        .catch(err => {
+            console.error(err);
+            throw err;
+        });
+}
+
+
 module.exports = {
     getAllFutureMeals,
     getAllPastMeals,
     getAllMeals,
     getFirstMeal,
-    getLastMeal
+    getLastMeal,
+    getMealById,
+    updateMealById,
+    deleteMealById,
+    createMeal
 };
