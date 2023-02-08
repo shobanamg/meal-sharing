@@ -12,7 +12,7 @@ const getAllReservations = async () => {
 }
 
 const getReservationById = async (id) => {
-    return knex
+    return await knex
         .select()
         .from('reservation')
         .where({id})
@@ -23,7 +23,7 @@ const getReservationById = async (id) => {
 }
 
 const updateReservationById = async (id, reservation) => {
-    return knex('reservation')
+    return await knex('reservation')
         .where({id})
         .update(reservation)
         .catch(err => {
@@ -33,7 +33,7 @@ const updateReservationById = async (id, reservation) => {
 }
 
 const deleteReservationById = async (id) => {
-    return knex('reservation')
+    return await knex('reservation')
         .where({id})
         .del()
         .catch(err => {

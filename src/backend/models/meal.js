@@ -61,7 +61,7 @@ const getLastMeal = async () => {
 }
 
 const getMealById = async (id) => {
-    return knex
+    return await knex
         .select()
         .from('meal')
         .where({id})
@@ -72,7 +72,7 @@ const getMealById = async (id) => {
 }
 
 const updateMealById = async (id, meal) => {
-    return knex('meal')
+    return await knex('meal')
         .where({id})
         .update(meal)
         .catch(err => {
@@ -82,7 +82,7 @@ const updateMealById = async (id, meal) => {
 }
 
 const deleteMealById = async (id) => {
-    return knex('meal')
+    return await knex('meal')
         .where({id})
         .del()
         .catch(err => {
