@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const mealRoute = require('./routes/mealRoute')
+const reservationRoute = require('./routes/reservationRoute')
+const reviewRoute = require('./routes/reviewRoute')
 const app = express();
 const router = express.Router();
 
@@ -21,6 +23,8 @@ app.use(express.json());
 app.use(cors());
 
 router.use("/meals", mealRoute);
+router.use("/reservations", reservationRoute);
+router.use("/reviews", reviewRoute);
 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
