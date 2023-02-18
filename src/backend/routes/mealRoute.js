@@ -10,6 +10,7 @@ router.get('/last-meal', MealController.getLastMeal);
 router.get('/:id', MealController.getMealById);
 router.put('/:id', MealController.updateMealById);
 router.delete('/:id', MealController.deleteMealById);
-router.get('/', MealController.getAllMeals);
+router.get('/', MealController.getMeals);
 router.post('/', MealController.createMeal);
+router.get('/:meal_id/reviews', MealController.getReviewsByMealId);
 module.exports = router;

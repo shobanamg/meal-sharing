@@ -105,6 +105,30 @@ const createMeal = async (req, res) => {
     }
 }
 
+const getMeals = async (req, res) =>  {
+    try {
+        const meals = await Meal.getMeals(req.query);
+        res.status(200).json(meals);
+        }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Failed to retrieve all the meals'});
+    }
+}
+
+const getReviewsByMealId = async (req, res) =>  {
+    try {
+        const reviews = await Meal.getReviewsByMealId(req.params.meal_id);
+        reviews.length > 0 ?
+            res.status(200).json(reviews) :
+            res.status(404).json({error:"No review found for this meal_id"});
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Failed to retrieve all the meals'});
+    }
+}
+
 
 module.exports = {
     getAllFutureMeals,
@@ -115,5 +139,7 @@ module.exports = {
     getMealById,
     updateMealById,
     deleteMealById,
-    createMeal
+    createMeal,
+    getMeals,
+    getReviewsByMealId
 };
