@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import MealList from "./components/MealList";
+import MealList from "./components/meallist/MealList";
 
 function App() {
   return (
