@@ -1,0 +1,56 @@
+.card {
+    background-color: #3e99c0;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1F2937;
+}
+
+.description {
+    color: #4B5563;
+    margin-bottom: 1rem;
+}
+
+.price {
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Styles for large screens */
+@media (min-width: 768px) {
+    .card {
+        padding: 2rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .description {
+        margin-bottom: 1.25rem;
+    }
+}
+
+/* Styles for small screens */
+@media (max-width: 479px) {
+    .card {
+        padding: 1rem;
+        background-color: #F3F4F6;
+    }
+
+    .title {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .description {
+        margin-bottom: 0.5rem;
+    }
+}
