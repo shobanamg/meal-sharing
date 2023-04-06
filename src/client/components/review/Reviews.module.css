@@ -1,0 +1,186 @@
+
+.addReview {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.addReview button {
+    background-color: #e0ffc9;
+    color: #008c00;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 16px;
+}
+
+
+.addEditReviewCard {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 2rem;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.fieldsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.fieldContainer{
+    width: 100%;
+    display: flex;
+}
+
+
+.addEditReviewForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.fieldContainer label {
+    font-weight: bold;
+    margin-top: 8px;
+    width: 20%;
+}
+
+.fieldContainer input,
+.fieldContainer textarea {
+    padding: 8px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.buttonContainer {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.buttonContainer button {
+    background-color: #e0ffc9;
+    color: #008c00;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 16px;
+}
+
+.buttonContainer button[type="submit"] {
+    margin-right: 16px;
+    background-color: #e0ffc9;
+    color: #008c00;
+}
+
+.buttonContainer button[type="button"] {
+    background-color: #f44336;
+    color: white;
+    margin-left: 16px;
+}
+
+.review {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.review .titleContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.review .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.review .stars {
+    margin-bottom: 8px;
+}
+
+.review .stars span {
+    color: gold;
+}
+
+.review .description {
+    margin-top: 2rem;
+}
+
+.review .date {
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.review .actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.review .actions button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+.review .actions .editButton {
+    background-color: #4CAF50;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .reviews {
+        max-width: 100%;
+        padding: 8px;
+    }
+
+    .addReview button {
+        margin-left: 0;
+        margin-top: 16px;
+    }
+
+    .addEditReviewCard {
+        margin-top: 1rem;
+    }
+
+    .fieldsContainer {
+        margin-top: 1rem;
+    }
+
+    .fieldContainer {
+        flex-direction: column;
+    }
+
+    .fieldContainer label {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .buttonContainer button {
+        margin-top: 8px;
+        margin-left: 0;
+    }
+
+    .review .title {
+        font-size: 20px;
+    }
+}
+
+
+

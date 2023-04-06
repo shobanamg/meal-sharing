@@ -2,13 +2,15 @@ const Review = require('../models/review')
 
 const getReviews = async (req, res) => {
     try {
-        const reviews = await Review.getReviews();
+        const mealId = req.query.meal_id;
+        const reviews = await Review.getReviews(mealId);
         res.status(200).json(reviews);
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Failed to retrieve all the reviews'});
     }
 }
+
 
 const getReviewById = async (req, res) => {
     try {

@@ -1,14 +1,14 @@
 const knex = require("../database");
 
-const getReviews = async () => {
-    return await knex
-        .select()
-        .from('review')
-        .orderBy('id')
-        .catch(err => {
-            console.error(err);
-            throw err;
-        });
+const getReviews = async (meal_id) => {
+    let query = knex.select().from('review').orderBy('id');
+    if (meal_id) {
+        query = query.where('meal_id', meal_id);
+    }
+    return await query.catch(err => {
+        console.error(err);
+        throw err;
+    });
 }
 
 const getReviewById = async (id) => {

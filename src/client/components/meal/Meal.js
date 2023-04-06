@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Meal.module.css';
 import {Link} from 'react-router-dom';
+import images from "../../images";
 
 const Meal = ({ meal }) => {
     return (
@@ -10,9 +11,7 @@ const Meal = ({ meal }) => {
                     <div className={styles.imageContainer}>
                         <img
                             className={styles.image}
-                            src={
-                                'https://images.unsplash.com/photo-1644677867331-03f28942e35c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80'
-                            }
+                            src={images.find((image) => image.id === meal.id).img}
                             alt="meal picture"
                         />
                     </div>

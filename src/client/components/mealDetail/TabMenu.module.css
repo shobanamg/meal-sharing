@@ -1,0 +1,31 @@
+.tabMenu {
+    display: flex;
+    margin: 2rem 0;
+}
+.tabMenu button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    background-color: #e0ffc9;
+    color: #008c00;
+    border: none;
+    border-right: 1px solid #ccc;
+}
+
+.tabMenu button:last-child {
+    border-right: none;
+}
+
+.tabMenu button:hover,
+.tabMenu button:focus {
+    background-color: #9CFF2E;
+}
+
+.tabMenu button.active {
+    background-color: #9CFF2E;
+}
+
+.reservations h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
