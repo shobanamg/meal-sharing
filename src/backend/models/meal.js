@@ -1,4 +1,4 @@
-const knex = require("../database");
+    const knex = require("../database");
 
 
 const getAllFutureMeals = async () => {
@@ -128,19 +128,19 @@ const getMeals = async (searchParams) => {
 
     if (availableReservations) {
         query.select('meal.id', 'meal.title', 'meal.description', 'meal.location',
-            'meal.meal_time', 'meal.max_reservations', 'meal.price' ).sum('reservation.number_of_guests as reserved_so_far')
-            .join('reservation', 'reservation.meal_id', '=', 'meal.id')
-            .groupBy('meal.id', 'meal.max_reservations' )
-            .having('reserved_so_far', '<', 'meal.max_reservations');
-       console.log(query.toSQL().toNative());
+            'meal.meal_time', 'meal.max_reservations', 'meal.price').sum('reservation.number_of_guests as reserved_so_far')
+            .leftJoin('reservation', 'reservation.meal_id', '=', 'meal.id')
+            .groupBy('meal.id', 'meal.max_reservations')
+            .havingRaw('sum(reservation.number_of_guests) < meal.max_reservations')
+        console.log(query.toSQL());
     }
 
     if (typeof availableReservations !== 'undefined' && !availableReservations) {
         query.select('meal.id', 'meal.title', 'meal.description', 'meal.location',
-            'meal.meal_time', 'meal.max_reservations', 'meal.price' ).sum('reservation.number_of_guests as reserved_so_far')
-            .join('reservation', 'reservation.meal_id', '=', 'meal.id')
-            .groupBy('meal.id','meal.max_reservations')
-            .having('reserved_so_far', '>', 'meal.max_reservations');
+            'meal.meal_time', 'meal.max_reservations', 'meal.price').sum('reservation.number_of_guests as reserved_so_far')
+            .leftJoin('reservation', 'reservation.meal_id', '=', 'meal.id')
+            .groupBy('meal.id', 'meal.max_reservations')
+            .havingRaw('sum(reservation.number_of_guests) > meal.max_reservations')
     }
 
 
