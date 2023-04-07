@@ -17,7 +17,7 @@
     },
     {
       "src": "/(.*\\.(js|css|svg|png|jpg|jpeg|gif|ico|json))$",
-      "dest": "src/frontend/public/$1"
+      "dest": "public/$1"
     },
     {
       "src": "/(.*)",
