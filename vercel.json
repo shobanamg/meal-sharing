@@ -6,11 +6,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/**",
+      "src": "dist/bundle.js",
       "use": "@vercel/static"
     },
     {
-      "src": "src/client/**",
+      "src": "dist/index.html",
       "use": "@vercel/static"
     }
   ],
@@ -21,15 +21,11 @@
     },
     {
       "src": "/(.*\\.(js|css|svg|png|jpg|jpeg|gif|ico|json))$",
-      "dest": "public/$1"
-    },
-    {
-      "src": "/",
-      "dest": "public/index.html"
+      "dest": "dist/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "src/client/$1"
+      "dest": "dist/index.html"
     }
   ]
 }
