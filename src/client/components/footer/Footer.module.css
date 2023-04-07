@@ -1,7 +1,26 @@
+/* Default styles for the footer */
+.footer {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
+.footer p {
+    margin: 0;
+}
 
-/* Responsive Styles */
+.footer span {
+    font-weight: bold;
+}
 
+/* Styles for screens smaller than 768px */
 @media (max-width: 768px) {
-
+    .footer {
+        font-size: 12px;
+    }
 }

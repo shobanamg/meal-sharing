@@ -18,6 +18,11 @@
     display: flex;
 }
 
+.info{
+    margin-top: 4rem;
+    text-align: center;
+}
+
 
 .reservationForm{
     display: flex;
@@ -33,6 +38,7 @@
 
 .fieldContainer input,
 .fieldContainer textarea {
+    width: 70%;
     padding: 8px;
     margin-bottom: 16px;
     border-radius: 4px;

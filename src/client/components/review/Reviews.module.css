@@ -52,6 +52,7 @@
 
 .fieldContainer input,
 .fieldContainer textarea {
+    width: 70%;
     padding: 8px;
     margin-bottom: 16px;
     border-radius: 4px;
@@ -79,6 +80,11 @@
     margin-right: 16px;
     background-color: #e0ffc9;
     color: #008c00;
+}
+
+.buttonContainer button[type="submit"]:hover,
+.buttonContainer button[type="submit"]:focus {
+    background-color: #9CFF2E;
 }
 
 .buttonContainer button[type="button"] {
@@ -139,7 +145,8 @@
 }
 
 .review .actions .editButton {
-    background-color: #4CAF50;
+    background-color: #e0ffc9;
+    color: #008c00;
 }
 
 

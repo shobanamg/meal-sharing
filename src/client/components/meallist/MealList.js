@@ -3,6 +3,8 @@ import Meal from "../meal/Meal";
 import styles from './MealList.module.css';
 import Loader from "../loader/Loader";
 import {useMealContext} from "../context/mealContext";
+import SeeMoreButton from "../buttons/SeeMore";
+import BackButton from "../buttons/BackButton";
 
 const MealList = ({isHome}) => {
     const {meals, loading, error} = useMealContext();
@@ -17,8 +19,9 @@ const MealList = ({isHome}) => {
 
     return (
         <div className={styles.allContainer}>
+            {isHome && <SeeMoreButton to="/meals"/>}
+            {!isHome && <BackButton/>}
             <div className={styles.grid}>
-
                 {isHome ? meals.slice(0, 2).map((meal) => (
                         <Meal meal={meal} key={meal.id}/>
                     )) :

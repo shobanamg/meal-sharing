@@ -7,6 +7,7 @@ import {fetchMealById} from "../../api";
 import Loader from "../loader/Loader";
 import Meal from "../meal/Meal";
 import ReservationForm from "../reservation/ReservationForm";
+import BackButton from "../buttons/BackButton";
 
 const MealDetails = () => {
     const [activeTab, setActiveTab] = useState('reviews');
@@ -38,12 +39,15 @@ const MealDetails = () => {
     };
 
     return (
+
         <div className={styles.allContainer}>
-            {loading ? <Loader/>: <Meal meal={meal}/>}
-            <TabMenu onReviewsTabClick={handleReviewsTabClick} onReservationsTabClick={handleReservationsTabClick} />
-            {reviewsVisible && <Reviews mealId={meal.id} />}
-            {reservationsVisible && <ReservationForm selectedMeal={meal} />}
+            <BackButton/>
+            {loading ? <Loader/> : <Meal meal={meal}/>}
+            <TabMenu onReviewsTabClick={handleReviewsTabClick} onReservationsTabClick={handleReservationsTabClick}/>
+            {reviewsVisible && <Reviews mealId={meal.id}/>}
+            {reservationsVisible && <ReservationForm selectedMeal={meal}/>}
         </div>
+
     );
 };
 

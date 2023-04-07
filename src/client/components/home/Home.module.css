@@ -1,47 +1,6 @@
-.container{
+.container {
     width: 100%;
-}
-
-.allContainer {
-    max-width: 1440px;
-    width: 90%;
-    margin: 5rem auto;
-}
-
-.imageContainer {
-    width: 100%;
-    height: 50rem;
-    background: center no-repeat url(https://i.imgur.com/d05C9be.jpg);
-    background-size: cover;
-    margin-top: 5rem;
-}
-
-.mealList{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 2rem
-}
-
-.mealCard{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    margin: 2rem;
-}
-
-.button {
-    background-color: #e0ffc9;
-    color: #008c00  ;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-
 }

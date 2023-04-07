@@ -8,9 +8,11 @@ function SuccessModal({message, onClose}) {
                 <div className={styles.successModalMessage}>
                     {message}
                 </div>
-                <button onClick={onClose}>
+                <div className={styles.buttonContainer}>
+                    <button onClick={onClose}>
                     OK
                 </button>
+                </div>
             </div>
         </div>
     );

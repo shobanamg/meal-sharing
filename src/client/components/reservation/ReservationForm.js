@@ -60,13 +60,12 @@ const ReservationForm = ({selectedMeal}) => {
     if (loading) {
         return <Loader/>
     }
-console.log(availableSpots);
     return (
         <div>
             <h2>Reservations</h2>
             {!availableSpots ?
-                <h3>Sorry, This meal is not available for reservation at the moment.
-                    All the spots booked. Please choose another meal</h3>
+                <h3 className={styles.info}>Sorry, This meal is not available for reservation at the moment.
+                    All the spots are booked. Please choose another meal</h3>
 
                 : (<div className={styles.reservationCard}>
                     <h3>Available Reservations :<span>{availableSpots}</span></h3>

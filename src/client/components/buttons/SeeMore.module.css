@@ -1,0 +1,21 @@
+.seeMoreButton {
+    background-color: #e0ffc9;
+    color: #008c00;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+
+}
+
+.arrow {
+    margin-left: 5px;
+}
+
+.seeMoreButtonContainer{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
