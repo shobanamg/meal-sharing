@@ -24,11 +24,11 @@ const images = [
         img: 'https://i.imgur.com/RZKoonq.png',
     },
     {
-        id: 9,
+        id: 6,
         img: 'https://i.imgur.com/NV5TtUd.png',
     },
     {
-        id: 10,
+        id: 7,
         img: 'https://i.imgur.com/fun4MPO.png',
     },
 
