@@ -105,6 +105,19 @@ const createMeal = async (req, res) => {
     }
 }
 
+const createMeals = async (req, res) => {
+    try {
+        const result = await Meal.createMeal(req.body);
+
+        if (result.length)
+            res.status(201).json({message:"Meals created successfully"});
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Failed to create the meals'});
+    }
+}
+
 const getMeals = async (req, res) =>  {
     try {
         const meals = await Meal.getMeals(req.query);
@@ -140,6 +153,7 @@ module.exports = {
     updateMealById,
     deleteMealById,
     createMeal,
+    createMeals,
     getMeals,
     getReviewsByMealId
 };

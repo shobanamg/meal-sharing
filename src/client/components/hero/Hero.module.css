@@ -10,13 +10,13 @@
 .heroImage{
     height : 15rem;
     width: 100%;
-    background-image: url('https://i.imgur.com/p05RBTk.jpg');
+    background-image: url("https://i.imgur.com/p05RBTk.jpg");
     background-size: cover;
     background-position: center;
 }
 .heroContent {
     text-align: center;
-    color: white;
+    color: #2D4726;
 }
 
 .heroTitle {

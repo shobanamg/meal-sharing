@@ -6,8 +6,7 @@
 }
 
 .addReview button {
-    background-color: #e0ffc9;
-    color: #008c00;
+    background-color: #FFAB00;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
@@ -19,6 +18,7 @@
 
 .addEditReviewCard {
     width: 100%;
+    height: fit-content;
     border-radius: 4px;
     margin-top: 2rem;
     padding: 2rem;
@@ -52,12 +52,17 @@
 
 .fieldContainer input,
 .fieldContainer textarea {
-    width: 70%;
+    width: 100%;
     padding: 8px;
     margin-bottom: 16px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
+
+.fieldContainer textarea {
+    height: 5rem;
+}
+
 
 .buttonContainer {
     display: flex;
@@ -66,25 +71,13 @@
 }
 
 .buttonContainer button {
-    background-color: #e0ffc9;
-    color: #008c00;
+    background-color: #FFAB00;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 16px;
-}
-
-.buttonContainer button[type="submit"] {
-    margin-right: 16px;
-    background-color: #e0ffc9;
-    color: #008c00;
-}
-
-.buttonContainer button[type="submit"]:hover,
-.buttonContainer button[type="submit"]:focus {
-    background-color: #9CFF2E;
 }
 
 .buttonContainer button[type="button"] {
@@ -113,6 +106,7 @@
 
 .review .stars {
     margin-bottom: 8px;
+    text-align: left;
 }
 
 .review .stars span {
@@ -120,7 +114,9 @@
 }
 
 .review .description {
+    height: fit-content;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .review .date {
@@ -145,8 +141,7 @@
 }
 
 .review .actions .editButton {
-    background-color: #e0ffc9;
-    color: #008c00;
+    background-color: #FFAB00;
 }
 
 

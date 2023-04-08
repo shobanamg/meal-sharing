@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 const Footer = ()=>{
     return(
         <div className={styles.footer}>
-            <p>Meal <span>Sharing</span>app <span>2023 &copy;</span></p>
+            <p>Meal Sharing app 2023 <span>  &copy;</span></p>
         </div>
     )
 }

@@ -10,7 +10,8 @@ const Navbar = ({toggleMenu, isMenuOpen}) => {
                 <nav className={styles.nav}>
 
                     <button
-                        className={`${styles.burger} ${isMenuOpen ? styles.open : ''}`}
+                        className={`${styles.burger} ${isMenuOpen ? styles.open : ''}
+                        ${isMenuOpen ? styles.burgerOpen : styles.burgerClose}`}
                         onClick={toggleMenu}
                     >
                         <span className={styles.line}></span>

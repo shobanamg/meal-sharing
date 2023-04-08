@@ -1,23 +1,32 @@
 import React, {useState} from 'react';
 import {useMealContext} from '../context/mealContext';
+import styles from './Search.module.css';
 
-const Search = () => {
-    const [searchText, setSearchText] = useState('');
-    const {meals, setMeals,handleSearch} = useMealContext();
+import debounce from "lodash.debounce";
 
+const debouncedHandle = debounce((callback, value) => {
+    callback(value);
+}, 1000);
+
+function Search() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const {handleSearch} = useMealContext();
 
     return (
-        <div className="styles.search styles.search-container">
-            <input type="text" placeholder="Search" className="inputSearch" value={searchText} onChange={(event) => {
-                setSearchText(event.target.value)
-            }}/>
-            <button onClick={() => {
-                const data = filteredMeals(meals, searchText);
-                setMeals(data)
-            }}>Search
-            </button>
+        <div className={styles.container}>
+            <input
+                type="text"
+                value={searchTerm}
+                placeholder="Search by meal title..."
+                className={styles.input}
+                onChange={(event) => {
+                    setSearchTerm(event.target.value);
+                    debouncedHandle(handleSearch, searchTerm);
+                }}
+
+            />
         </div>
-    )
+    );
 }
 
 export default Search;

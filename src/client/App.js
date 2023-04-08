@@ -18,8 +18,9 @@ function App() {
 
     return (
         <>
-            <Navbar toggleMenu={toggleMenu} isMenuOpen={isMenuOpen}/>
             <Router id="main">
+
+                <Navbar toggleMenu={toggleMenu} isMenuOpen={isMenuOpen}/>
                 <div className="container">
                     <Switch className="data">
                         <MealProvider>
@@ -35,8 +36,8 @@ function App() {
                         </MealProvider>
                     </Switch>
                 </div>
+                <Footer/>
             </Router>
-            <Footer/>
         </>
     )
         ;

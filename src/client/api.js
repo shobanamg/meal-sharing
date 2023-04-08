@@ -8,6 +8,13 @@ export const fetchMeals = async () => {
         .catch(error => console.log(error));
 }
 
+
+export const fetchMealsWithTitle = async (title) => {
+    return axios.get(`${BASE_URL}/meals?title=${title}`)
+        .then(response => response.data)
+        .catch(error => console.log(error));
+}
+
 export const fetchMealById = async (id) => {
     return axios.get(`${BASE_URL}/meals/${id}`)
         .then(response => response.data)

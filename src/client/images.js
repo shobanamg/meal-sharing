@@ -1,37 +1,31 @@
 const images = [
     {
         id: 1,
-        img: 'https://i.imgur.com/hNU331I.png',
+        img: 'https://i.imgur.com/5XONZLx.jpg',
     },
     {
         id: 2,
-        img: 'https://i.imgur.com/RmMKnW1.jpg',
-    },
-    {
-        id: 3,
         img: 'https://i.imgur.com/Igd58YE.jpg',
     },
     {
+        id: 3,
+        img: 'https://i.imgur.com/bIviAAE.jpg',
+    },
+    {
         id: 4,
-        img: 'https://i.imgur.com/y56wD5o.png',
+        img: 'https://i.imgur.com/GmekqGF.jpg',
     },
     {
         id: 5,
-        img: 'https://i.imgur.com/a6Y9lVg.png',
-    },
-    {
-        id: 8,
-        img: 'https://i.imgur.com/RZKoonq.png',
+        img: 'https://i.imgur.com/SI9EPA5.jpg?1',
     },
     {
         id: 6,
-        img: 'https://i.imgur.com/NV5TtUd.png',
+        img: 'https://i.imgur.com/DxgyGZo.jpg?1',
     },
     {
         id: 7,
-        img: 'https://i.imgur.com/fun4MPO.png',
-    },
-
+        img: 'https://i.imgur.com/kbBiDfI.jpg?1',
+    }
 ]
-
 export default images;

@@ -36,9 +36,8 @@
     width: 20%;
 }
 
-.fieldContainer input,
-.fieldContainer textarea {
-    width: 70%;
+.fieldContainer input {
+    width: 100%;
     padding: 8px;
     margin-bottom: 16px;
     border-radius: 4px;
@@ -52,19 +51,13 @@
 }
 
 .buttonContainer button {
-    background-color: #e0ffc9;
-    color: #008c00;
+    background-color: #FFAB00;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 16px;
-}
-
-.buttonContainer button[type="submit"] {
-    background-color: #e0ffc9;
-    color: #008c00;
 }
 
 .buttonContainer button[type="button"] {

@@ -12,5 +12,6 @@ router.put('/:id', MealController.updateMealById);
 router.delete('/:id', MealController.deleteMealById);
 router.get('/', MealController.getMeals);
 router.post('/', MealController.createMeal);
+router.post('/create-meals', MealController.createMeals);
 router.get('/:meal_id/reviews', MealController.getReviewsByMealId);
 module.exports = router;

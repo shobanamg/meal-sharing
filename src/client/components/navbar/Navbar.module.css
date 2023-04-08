@@ -2,7 +2,7 @@
     max-width: 1440px;
     width: 70%;
     margin: auto;
-    background-color: rgba(195,255,33,0.34);
+    background-color: #6CAE75;
 }
 
 .header {
@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     z-index: 2;
-    background-color: #fff;
+    background-color: #6CAE75;
 }
 
 .nav {
@@ -28,6 +28,7 @@
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 .burger {
@@ -73,11 +74,11 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #fff;
 }
 
 .menuItem {
     margin: 0 20px;
+    color: #2D4726;
 }
 
 .menu li {
@@ -94,7 +95,7 @@
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.8);
+    color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -124,6 +125,15 @@
 
     .menu.open {
         transform: translateX(0);
+        background-color: #fff;
+    }
+
+    .burgerClose {
+        background-color: #6CAE75;
+    }
+
+    .burgerOpen {
+        background-color: #fff;
     }
 
     .menu li {
@@ -132,8 +142,12 @@
 
 
     .menuItem {
-        margin: 20px 0; /* changed to add vertical space between links */
-        list-style: none; /* added to remove bullets */
+        margin: 20px 0;
+        list-style: none;
+    }
+
+    .menuItem a {
+        color: #2D4726;
     }
 
     .menuItem a:hover {

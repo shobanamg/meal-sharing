@@ -26,7 +26,7 @@ const ReservationForm = ({selectedMeal}) => {
                 setMealsWithAvailableSpots(data);
                 setLoading(false);
             })
-    }, []);
+    }, [reservation]);
 
     const availableSpots = findAvailableSpots(mealsWithAvailableSpots, selectedMeal);
 

@@ -61,14 +61,34 @@ const getLastMeal = async () => {
 }
 
 const getMealById = async (id) => {
-    return await knex
-        .select()
-        .from('meal')
-        .where({id})
+    const query = knex('meal')
+        .select(
+            'meal.id',
+            'meal.title',
+            'meal.description',
+            'meal.location',
+            'meal.meal_time',
+            'meal.max_reservations',
+            'meal.price',
+            knex.raw('AVG(review.stars) as avg_review_stars'),
+            knex.raw('COUNT(review.id) as total_reviews'),
+            knex.raw('SUM(reservation.number_of_guests) as reserved_so_far')
+        )
+        .leftJoin('reservation', 'reservation.meal_id', '=', 'meal.id')
+        .leftJoin('review', 'review.meal_id', '=', 'meal.id')
+        .groupBy('meal.id')
+
+    const meal = await query
+        .where({'meal.id': id})
         .catch(err => {
             console.error(err);
             throw err;
         });
+
+        meal.available_spots = meal.max_reservations - meal.reserved_so_far;
+
+    return meal;
+
 }
 
 const updateMealById = async (id, meal) => {
@@ -81,113 +101,126 @@ const updateMealById = async (id, meal) => {
         });
 }
 
-const deleteMealById = async (id) => {
-    return await knex('meal')
-        .where({id})
-        .del()
-        .catch(err => {
+    const deleteMealById = async (id) => {
+        return await knex('meal')
+            .where({id})
+            .del()
+            .catch(err => {
+                console.error(err);
+                throw err;
+            });
+    }
+
+    const createMeal = async (meal) => {
+        return await knex('meal')
+            .insert(meal)
+            .catch(err => {
+                console.error(err);
+                throw err;
+            });
+    }
+
+    const createMeals = async (meals) => {
+        try {
+            return await Promise.all(
+                meals.map((meal) => {
+                    return knex("meal").insert(meal);
+                })
+            );
+        } catch (err) {
             console.error(err);
             throw err;
-        });
-}
-
-const createMeal = async (meal) => {
-    return await knex('meal')
-        .insert(meal)
-        .catch(err => {
-            console.error(err);
-            throw err;
-        });
-}
-
-const getReviewsByMealId = async (mealId) => {
-    return await knex
-        .select()
-        .from('review')
-        .where({meal_id: mealId})
-        .catch(err => {
-            console.error(err);
-            throw err;
-        });
-}
-
-
-const getMeals = async (searchParams) => {
-
-
-    const maxPrice = Number(searchParams.maxPrice);
-    const title = searchParams.title;
-    const dateAfter = searchParams.dateAfter;
-    const dateBefore = searchParams.dateBefore;
-    const limit = Number(searchParams.limit);
-    const sortKey = searchParams.sortKey;
-    const sortDir = searchParams.sortDir;
-    const availableReservations = searchParams.availableReservations;
-
-    const query = knex('meal');
-
-    if (availableReservations) {
-        query.select('meal.id', 'meal.title', 'meal.description', 'meal.location',
-            'meal.meal_time', 'meal.max_reservations', 'meal.price').sum('reservation.number_of_guests as reserved_so_far')
-            .leftJoin('reservation', 'reservation.meal_id', '=', 'meal.id')
-            .groupBy('meal.id', 'meal.max_reservations')
-            .havingRaw('sum(reservation.number_of_guests) < meal.max_reservations')
-        console.log(query.toSQL());
-    }
-
-    if (typeof availableReservations !== 'undefined' && !availableReservations) {
-        query.select('meal.id', 'meal.title', 'meal.description', 'meal.location',
-            'meal.meal_time', 'meal.max_reservations', 'meal.price').sum('reservation.number_of_guests as reserved_so_far')
-            .leftJoin('reservation', 'reservation.meal_id', '=', 'meal.id')
-            .groupBy('meal.id', 'meal.max_reservations')
-            .havingRaw('sum(reservation.number_of_guests) > meal.max_reservations')
-    }
-
-
-    if (maxPrice && !isNaN(maxPrice)) {
-        query.where('price', '<', maxPrice);
-    }
-    if (title) {
-        query.where('title', 'like', `%${title}%`);
-    }
-
-    if (dateAfter) {
-        query.where('meal_time', '>', dateAfter);
-    }
-
-    if (dateBefore) {
-        query.where('meal_time', '<', dateBefore);
-    }
-
-    if (limit) {
-        query.limit(limit);
-    }
-
-    if (sortKey === 'meal_time' || sortKey === 'max_reservations' || sortKey === 'price') {
-        if (sortDir === 'asc' || sortDir === 'desc') {
-            query.orderBy(sortKey, sortDir);
         }
+    };
+
+
+    const getReviewsByMealId = async (mealId) => {
+        return await knex
+            .select()
+            .from('review')
+            .where({meal_id: mealId})
+            .catch(err => {
+                console.error(err);
+                throw err;
+            });
     }
 
-    console.log(query.toSQL().toNative());
-    return await query
-        .catch(err => {
-            console.error(err);
-            throw err;
-        });
-}
+    const getMeals = async (searchParams) => {
+        const {
+            maxPrice,
+            title,
+            dateAfter,
+            dateBefore,
+            limit,
+            sortKey,
+            sortDir,
+            availableReservations
+        } = searchParams;
+
+        const query = knex('meal')
+            .select(
+                'meal.id',
+                'meal.title',
+                'meal.description',
+                'meal.location',
+                'meal.meal_time',
+                'meal.max_reservations',
+                'meal.price',
+                knex.raw('AVG(review.stars) as avg_review_stars'),
+                knex.raw('COUNT(review.id) as total_reviews'),
+                knex.raw('SUM(reservation.number_of_guests) as reserved_so_far')
+            )
+            .leftJoin('reservation', 'reservation.meal_id', '=', 'meal.id')
+            .leftJoin('review', 'review.meal_id', '=', 'meal.id')
+            .groupBy('meal.id')
+            .orderBy(sortKey || 'meal_time', sortDir || 'asc');
+
+        if (!availableReservations) {
+            query.havingRaw('SUM(reservation.number_of_guests) <= meal.max_reservations OR SUM(reservation.number_of_guests) IS NULL');
+        }
+
+        if (maxPrice && !isNaN(maxPrice)) {
+            query.where('meal.price', '<', maxPrice);
+        }
+
+        if (title) {
+            query.where('meal.title', 'like', `%${title}%`);
+        }
+
+        if (dateAfter) {
+            query.where('meal.meal_time', '>', dateAfter);
+        }
+
+        if (dateBefore) {
+            query.where('meal.meal_time', '<', dateBefore);
+        }
+
+        if (limit) {
+            query.limit(limit);
+        }
+
+        const meals = await query;
+
+        // For each meal, calculate the number of available spots
+        for (const meal of meals) {
+            meal.available_spots = meal.max_reservations - meal.reserved_so_far;
+        }
+
+        return meals;
+    };
 
 
-module.exports = {
-    getAllFutureMeals,
-    getAllPastMeals,
-    getAllMeals,
-    getFirstMeal,
-    getLastMeal,
-    getMealById,
-    updateMealById,
-    deleteMealById,
-    createMeal,
-    getMeals,
-    getReviewsByMealId
-};
+    module.exports = {
+        getAllFutureMeals,
+        getAllPastMeals,
+        getAllMeals,
+        getFirstMeal,
+        getLastMeal,
+        getMealById,
+        updateMealById,
+        deleteMealById,
+        createMeal,
+        createMeals,
+        getMeals,
+        getReviewsByMealId
+    };

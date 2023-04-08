@@ -5,13 +5,11 @@ import Loader from "../loader/Loader";
 import {useMealContext} from "../context/mealContext";
 import SeeMoreButton from "../buttons/SeeMore";
 import BackButton from "../buttons/BackButton";
+import Search from "../search/Search";
+import MealSort from "../mealSort/MealSort";
 
 const MealList = ({isHome}) => {
-    const {meals, loading, error} = useMealContext();
-
-    if (loading) {
-        return <Loader/>
-    }
+    const {meals, popularMeals, loading, error} = useMealContext();
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -21,15 +19,18 @@ const MealList = ({isHome}) => {
         <div className={styles.allContainer}>
             {isHome && <SeeMoreButton to="/meals"/>}
             {!isHome && <BackButton/>}
-            <div className={styles.grid}>
-                {isHome ? meals.slice(0, 2).map((meal) => (
-                        <Meal meal={meal} key={meal.id}/>
+            {!isHome && <Search/>}
+            {!isHome && <MealSort/>}
+
+            {loading ? <Loader/> : <div className={styles.grid}>
+                {isHome ? popularMeals.map((meal) => (
+                        <Meal key={meal.id + meal.title} meal={meal}/>
                     )) :
-                    meals.map(meal => (
-                        <Meal key={meal.id} meal={meal}/>
+                    meals && meals.map(meal => (
+                        <Meal key={meal.id + meal.title} meal={meal}/>
                     ))
                 }
-            </div>
+            </div>}
         </div>
     );
 }
