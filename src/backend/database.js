@@ -8,7 +8,7 @@ const knex = require("knex")({
     port: process.env.MYSQLPORT,
     user: process.env.MYSQLUSER,
     password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLNAME,
+    database: process.env.MYSQLDATABASE,
 
   },
   pool: { min: 0, max: 7 },
