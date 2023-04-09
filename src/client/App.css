@@ -1,41 +1,41 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-sizing: border-box;
-    text-decoration: none;
-    color: #2D4726;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #2d4726;
 }
 
 .html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 #main {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
 }
 
-
 @media only screen and (max-width: 768px) {
-    /* on screens smaller than 768px */
-    .container {
-        flex-direction: column;
-    }
+  /* on screens smaller than 768px */
+  .container {
+    flex-direction: column;
+  }
 
-    .left, .data {
-        width: 100%;
-    }
+  .left,
+  .data {
+    width: 100%;
+  }
 }

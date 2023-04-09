@@ -1,21 +1,20 @@
 .seeMoreButton {
-    background-color: #FFAB00;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-
+  background-color: #ffab00;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
 
 .arrow {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
-.seeMoreButtonContainer{
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 2rem;
+.seeMoreButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
 }

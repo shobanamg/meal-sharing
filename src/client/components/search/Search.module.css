@@ -1,17 +1,16 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
 .input {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #6CAE75;
-    border-radius: 4px;
-    margin-right: 10px;
-    width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #6cae75;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 300px;
 }
-
