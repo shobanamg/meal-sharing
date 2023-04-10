@@ -17,7 +17,12 @@ const MealList = ({ isHome }) => {
 
   return (
     <div className={styles.allContainer}>
-      {isHome && <SeeMoreButton to="/meals" />}
+      {isHome && (
+        <>
+          <SeeMoreButton to="/meals" />
+          <h1 className={styles.popularMealHeader}>Top Rated Meals</h1>
+        </>
+      )}
       {!isHome && <BackButton />}
       {!isHome && <Search />}
       {!isHome && <MealSort />}

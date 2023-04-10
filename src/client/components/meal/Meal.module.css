@@ -91,7 +91,7 @@
 }
 
 .description {
-  padding-bottom: 4rem;
+  padding-bottom: 0.8rem;
 }
 
 @media (max-width: 768px) {
@@ -135,7 +135,18 @@
   }
 
   .locationContainer {
+    flex-direction: column;
     margin-top: 1rem;
     text-align: left;
+  }
+
+  .locationContainer span {
+    margin-left: 1rem;
+  }
+
+  .locationContainer .bold {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.8rem;
   }
 }

@@ -8,8 +8,8 @@ export const MealProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [popularMeals, setPopularMeals] = useState([]);
-  const [sortKey, setSortKey] = useState("asc");
-  const [sortDir, setSortDir] = useState("title");
+  const [sortKey, setSortKey] = useState("meal_time");
+  const [sortDir, setSortDir] = useState("asc");
 
   useEffect(() => {
     fetchMeals()

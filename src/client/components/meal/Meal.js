@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Meal.module.css";
 import { Link } from "react-router-dom";
 import images from "../../images";
+import { mealTime } from "../../utils/mealTime";
 
 const Meal = ({ meal }) => {
   return (
@@ -35,10 +36,18 @@ const Meal = ({ meal }) => {
               </div>
               <p className={styles.description}>{meal.description}</p>
               <div className={styles.locationContainer}>
-                <p className={styles.bold}>Location: {meal.location}</p>
-                <p className={styles.bold}>
-                  Available spots: {meal.available_spots}
-                </p>
+                <div className={styles.bold}>
+                  <p>Location</p>
+                  <span>{meal.location}</span>
+                </div>
+                <div className={styles.bold}>
+                  <p>Meal Time</p>
+                  <span>{mealTime(meal.meal_time)}</span>
+                </div>
+                <div className={styles.bold}>
+                  <p>Available Spots</p>
+                  <span>{meal.available_spots}</span>
+                </div>
               </div>
             </div>
           </div>

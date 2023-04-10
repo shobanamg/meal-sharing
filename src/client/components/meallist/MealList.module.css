@@ -4,6 +4,11 @@
   margin: 7rem auto;
 }
 
+.popularMealHeader {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
 .grid {
   width: 100%;
   display: grid;

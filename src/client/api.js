@@ -23,13 +23,6 @@ export const fetchMealById = async (id) => {
     .catch((error) => console.log(error));
 };
 
-export const fetchMealsWithAvailableSpots = async () => {
-  return axios
-    .get(`${BASE_URL}/meals/?availableReservations=true`)
-    .then((response) => response.data)
-    .catch((error) => console.log(error));
-};
-
 export const addReservation = async (reservation) => {
   return axios
     .post(`${BASE_URL}/reservations`, reservation)

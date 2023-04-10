@@ -75,14 +75,16 @@ const getMealById = async (id) => {
     .leftJoin("review", "review.meal_id", "=", "meal.id")
     .groupBy("meal.id");
 
-  const meal = await query.where({ "meal.id": id }).catch((err) => {
+  const meals = await query.where({ "meal.id": id }).catch((err) => {
     console.error(err);
     throw err;
   });
 
-  meal.available_spots = meal.max_reservations - meal.reserved_so_far;
+  for (const meal of meals) {
+    meal.available_spots = meal.max_reservations - meal.reserved_so_far;
+  }
 
-  return meal;
+  return meals;
 };
 
 const updateMealById = async (id, meal) => {
@@ -168,7 +170,9 @@ const getMeals = async (searchParams) => {
     .groupBy("meal.id")
     .orderBy(sortKey || "meal_time", sortDir || "asc");
 
-  if (!availableReservations) {
+  console.log(query.toQuery());
+
+  if (availableReservations) {
     query.havingRaw(
       "SUM(reservation.number_of_guests) <= meal.max_reservations OR SUM(reservation.number_of_guests) IS NULL"
     );

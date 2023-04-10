@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Reviews.module.css";
 import { daysAgo } from "../../utils/daysAgo";
+import Button from "../buttons/Button";
 
 export const ReviewCard = ({ review, onDelete, onEdit }) => {
   const handleDeleteClick = (event) => {
@@ -30,10 +31,12 @@ export const ReviewCard = ({ review, onDelete, onEdit }) => {
       </div>
       <div className={styles.description}>{review.description}</div>
       <div className={styles.actions}>
-        <button onClick={handleEditClick} className={styles.editButton}>
+        <Button variant="primary" onClick={handleEditClick}>
           Edit
-        </button>
-        <button onClick={handleDeleteClick}>Delete</button>
+        </Button>
+        <Button variant="secondary" onClick={handleDeleteClick}>
+          Delete
+        </Button>
       </div>
     </div>
   );

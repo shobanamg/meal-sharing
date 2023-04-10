@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./BackButton.module.css";
+import Button from "./Button";
 
 const BackButton = () => {
   const history = useHistory();
@@ -10,9 +11,9 @@ const BackButton = () => {
   };
 
   return (
-    <button className={styles.backButton} onClick={goBack}>
+    <Button variant="primary" className={styles.backButton} onClick={goBack}>
       <span className={styles.backIcon}>&#8592;</span> Back
-    </button>
+    </Button>
   );
 };
 

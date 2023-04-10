@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Reservations.module.css";
-import { addReservation, fetchMealsWithAvailableSpots } from "../../api";
-import Loader from "../loader/Loader";
-import { findAvailableSpots } from "../../utils/findAvailableSpots";
+import { addReservation } from "../../api";
 import SuccessModal from "../modal/SuccessModal";
+import Button from "../buttons/Button";
 
 const initialState = {
   mealId: "",
@@ -13,28 +12,14 @@ const initialState = {
   numberOfGuests: "",
 };
 
-const ReservationForm = ({ selectedMeal }) => {
+const ReservationForm = ({ mealId, availableSpots }) => {
   const [reservation, setReservation] = useState(initialState);
-  const [mealsWithAvailableSpots, setMealsWithAvailableSpots] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-  useEffect(() => {
-    fetchMealsWithAvailableSpots().then((data) => {
-      setMealsWithAvailableSpots(data);
-      setLoading(false);
-    });
-  }, [reservation]);
-
-  const availableSpots = findAvailableSpots(
-    mealsWithAvailableSpots,
-    selectedMeal
-  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newReservation = {
-      meal_id: selectedMeal.id,
+      meal_id: mealId,
       contact_number: reservation.contactNumber,
       contact_name: reservation.contactName,
       contact_email: reservation.contactEmail,
@@ -54,16 +39,13 @@ const ReservationForm = ({ selectedMeal }) => {
     setReservation({ ...reservation, [event.target.name]: event.target.value });
   };
 
-  if (loading) {
-    return <Loader />;
-  }
   return (
     <div>
       <h2>Reservations</h2>
       {!availableSpots ? (
         <h3 className={styles.info}>
           Sorry, This meal is not available for reservation at the moment. All
-          the spots are booked. Please choose another meal
+          the spots are booked. Please choose another meal.
         </h3>
       ) : (
         <div className={styles.reservationCard}>
@@ -79,6 +61,7 @@ const ReservationForm = ({ selectedMeal }) => {
                   name="contactName"
                   value={reservation.contactName}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className={styles.fieldContainer}>
@@ -88,6 +71,7 @@ const ReservationForm = ({ selectedMeal }) => {
                   name="contactEmail"
                   value={reservation.contactEmail}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className={styles.fieldContainer}>
@@ -105,13 +89,17 @@ const ReservationForm = ({ selectedMeal }) => {
                 <input
                   type="number"
                   name="numberOfGuests"
+                  min="1"
+                  max={availableSpots}
                   value={reservation.numberOfGuests}
                   onChange={handleChange}
                 />
               </div>
             </div>
             <div className={styles.buttonContainer}>
-              <button type="submit">Make Reservation</button>
+              <Button variant="primary" type="submit">
+                Make Reservation
+              </Button>
             </div>
           </form>
         </div>

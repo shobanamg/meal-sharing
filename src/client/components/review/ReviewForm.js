@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Reviews.module.css";
+import Button from "../buttons/Button";
 
 export const AddEditReviewForm = ({ mealId, review, onSave, onCancel }) => {
   const [title, setTitle] = useState(review ? review.title : "");
@@ -51,10 +52,12 @@ export const AddEditReviewForm = ({ mealId, review, onSave, onCancel }) => {
           </div>
         </div>
         <div className={styles.buttonContainer}>
-          <button type="submit">{review ? "Save" : "Add Review"}</button>
-          <button type="button" onClick={onCancel}>
+          <Button variant="primary" type="submit">
+            Save
+          </Button>
+          <Button variant="secondary" type="button" onClick={onCancel}>
             Cancel
-          </button>
+          </Button>
         </div>
       </form>
     </div>

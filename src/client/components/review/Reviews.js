@@ -8,6 +8,8 @@ import {
   deleteReview,
   updateReview,
 } from "../../api.js";
+import Button from "../buttons/Button";
+import Loader from "../loader/Loader";
 
 export const Reviews = ({ mealId }) => {
   const [reviews, setReviews] = useState([]);
@@ -68,7 +70,7 @@ export const Reviews = ({ mealId }) => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
@@ -80,7 +82,9 @@ export const Reviews = ({ mealId }) => {
       <h2>Reviews</h2>
       {!isAddingOrEditing && (
         <div className={styles.addReview}>
-          <button onClick={handleAddReviewClick}>Add a Review</button>
+          <Button variant="primary" onClick={handleAddReviewClick}>
+            Add a Review
+          </Button>
         </div>
       )}
       {isAddingOrEditing && (
