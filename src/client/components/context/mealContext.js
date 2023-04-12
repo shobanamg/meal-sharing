@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { fetchMeals, fetchMealsWithTitle } from "../../api";
+import { fetchMeals, fetchMealsWithTitle, sortingMeals } from "../../api";
 
 export const MealContext = createContext();
 
@@ -39,26 +39,16 @@ export const MealProvider = ({ children }) => {
   };
 
   const sortMeals = (key, dir) => {
-    const sortedMeals = [...meals].sort((a, b) => {
-      if (dir === "asc") {
-        if (a[key] < b[key]) return -1;
-        if (a[key] > b[key]) return 1;
-        return 0;
-      } else if (dir === "desc") {
-        if (a[key] < b[key]) return 1;
-        if (a[key] > b[key]) return -1;
-        return 0;
-      }
+    sortingMeals(key, dir).then((data) => {
+      setMeals(data);
+      setSortKey(key);
+      setSortDir(dir);
     });
-    setMeals(sortedMeals);
-    setSortKey(key);
-    setSortDir(dir);
   };
 
   const contextValue = {
     meals,
     popularMeals,
-    setMeals,
     loading,
     error,
     setError,

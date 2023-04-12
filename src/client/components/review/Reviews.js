@@ -26,20 +26,17 @@ export const Reviews = ({ mealId }) => {
       .then((data) => {
         setReviews(data);
         setIsLoading(false);
-        setIsAddingOrEditing(false);
         setIsSaving(false);
       })
       .catch((error) => {
         setError(error);
         setIsLoading(false);
-        setIsAddingOrEditing(false);
         setIsSaving(false);
       });
   }, [mealId, isSaving]);
 
   const handleAddReview = (review) => {
-    addReview(review).then((data) => {
-      setReviews([...reviews, data]);
+    addReview(review).then(() => {
       setIsAddingOrEditing(false);
       setIsSaving(true);
     });
@@ -52,8 +49,7 @@ export const Reviews = ({ mealId }) => {
   };
 
   const handleUpdateReview = (id, updatedReview) => {
-    updateReview(id, updatedReview).then((data) => {
-      setReviews(reviews.map((review) => (review.id === id ? data : review)));
+    updateReview(id, updatedReview).then(() => {
       setIsAddingOrEditing(false);
       setEditingReview(null);
       setIsSaving(true);
