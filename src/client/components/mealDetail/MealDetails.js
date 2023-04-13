@@ -10,14 +10,16 @@ import BackButton from "../buttons/BackButton";
 const MealDetails = () => {
   const [meal, setMeal] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isSavingReservation, setIsSavingReservation] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
     fetchMealById(id).then((data) => {
       setMeal(data[0]);
       setLoading(false);
+      setIsSavingReservation(false);
     });
-  }, []);
+  }, [isSavingReservation]);
 
   return (
     <div className={styles.allContainer}>
@@ -27,7 +29,11 @@ const MealDetails = () => {
       ) : (
         <>
           <Meal meal={meal} />
-          <TabMenu mealId={meal.id} availableSpots={meal.available_spots} />
+          <TabMenu
+            mealId={meal.id}
+            availableSpots={meal.available_spots}
+            setIsSavingReservation={setIsSavingReservation}
+          />
         </>
       )}
     </div>

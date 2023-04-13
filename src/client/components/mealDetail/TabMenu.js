@@ -3,7 +3,7 @@ import styles from "./TabMenu.module.css";
 import { Reviews } from "../review/Reviews";
 import ReservationForm from "../reservation/ReservationForm";
 
-const TabMenu = ({ mealId, availableSpots }) => {
+const TabMenu = ({ mealId, availableSpots, setIsSavingReservation }) => {
   const [activeTab, setActiveTab] = useState("reviews");
 
   const handleTabClick = (tabName) => {
@@ -28,7 +28,11 @@ const TabMenu = ({ mealId, availableSpots }) => {
       </div>
       {activeTab === "reviews" && <Reviews mealId={mealId} />}
       {activeTab === "reservations" && (
-        <ReservationForm mealId={mealId} availableSpots={availableSpots} />
+        <ReservationForm
+          mealId={mealId}
+          availableSpots={availableSpots}
+          setIsSavingReservation={setIsSavingReservation}
+        />
       )}
     </>
   );

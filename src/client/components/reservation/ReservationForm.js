@@ -12,7 +12,11 @@ const initialState = {
   numberOfGuests: "",
 };
 
-const ReservationForm = ({ mealId, availableSpots }) => {
+const ReservationForm = ({
+  mealId,
+  availableSpots,
+  setIsSavingReservation,
+}) => {
   const [reservation, setReservation] = useState(initialState);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
@@ -33,6 +37,7 @@ const ReservationForm = ({ mealId, availableSpots }) => {
 
   function handleCloseSuccessModal() {
     setShowSuccessModal(false);
+    setIsSavingReservation(true);
   }
 
   const handleChange = (event) => {
