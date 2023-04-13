@@ -23,9 +23,14 @@ const MealList = ({ isHome }) => {
           <h1 className={styles.popularMealHeader}>Top Rated Meals</h1>
         </>
       )}
-      {!isHome && <BackButton />}
-      {!isHome && <Search />}
-      {!isHome && <MealSort />}
+      {!isHome && (
+        <>
+          {" "}
+          <BackButton />
+          <Search />
+          <MealSort />
+        </>
+      )}
 
       {loading ? (
         <Loader />

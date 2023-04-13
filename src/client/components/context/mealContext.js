@@ -10,6 +10,7 @@ export const MealProvider = ({ children }) => {
   const [popularMeals, setPopularMeals] = useState([]);
   const [sortKey, setSortKey] = useState("meal_time");
   const [sortDir, setSortDir] = useState("asc");
+  const [isSavingReservation, setIsSavingReservation] = useState(false);
 
   useEffect(() => {
     fetchMeals()
@@ -17,12 +18,14 @@ export const MealProvider = ({ children }) => {
         setPopularMeals(data.filter((meal) => meal.avg_review_stars > 4));
         setMeals(data);
         setLoading(false);
+        setIsSavingReservation(false);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
+        setIsSavingReservation(false);
       });
-  }, []);
+  }, [isSavingReservation]);
 
   const handleSearch = async (value) => {
     try {
@@ -58,6 +61,8 @@ export const MealProvider = ({ children }) => {
     sortMeals,
     setSortKey,
     setSortDir,
+    isSavingReservation,
+    setIsSavingReservation,
   };
 
   return (

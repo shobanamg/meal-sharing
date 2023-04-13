@@ -6,11 +6,12 @@ import { fetchMealById } from "../../api";
 import Loader from "../loader/Loader";
 import Meal from "../meal/Meal";
 import BackButton from "../buttons/BackButton";
+import { useMealContext } from "../context/mealContext";
 
 const MealDetails = () => {
   const [meal, setMeal] = useState({});
   const [loading, setLoading] = useState(true);
-  const [isSavingReservation, setIsSavingReservation] = useState(false);
+  const { isSavingReservation, setIsSavingReservation } = useMealContext();
 
   const { id } = useParams();
   useEffect(() => {
@@ -29,11 +30,7 @@ const MealDetails = () => {
       ) : (
         <>
           <Meal meal={meal} />
-          <TabMenu
-            mealId={meal.id}
-            availableSpots={meal.available_spots}
-            setIsSavingReservation={setIsSavingReservation}
-          />
+          <TabMenu mealId={meal.id} availableSpots={meal.available_spots} />
         </>
       )}
     </div>

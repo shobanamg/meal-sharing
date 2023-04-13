@@ -3,6 +3,7 @@ import styles from "./Reservations.module.css";
 import { addReservation } from "../../api";
 import SuccessModal from "../modal/SuccessModal";
 import Button from "../buttons/Button";
+import { useMealContext } from "../context/mealContext";
 
 const initialState = {
   mealId: "",
@@ -12,13 +13,10 @@ const initialState = {
   numberOfGuests: "",
 };
 
-const ReservationForm = ({
-  mealId,
-  availableSpots,
-  setIsSavingReservation,
-}) => {
+const ReservationForm = ({ mealId, availableSpots }) => {
   const [reservation, setReservation] = useState(initialState);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const { setIsSavingReservation } = useMealContext();
 
   const handleSubmit = (event) => {
     event.preventDefault();
