@@ -25,7 +25,6 @@ const MealList = ({ isHome }) => {
       )}
       {!isHome && (
         <>
-          {" "}
           <BackButton />
           <Search />
           <MealSort />
