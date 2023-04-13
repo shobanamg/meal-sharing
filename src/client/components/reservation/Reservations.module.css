@@ -1,0 +1,74 @@
+.reservationCard {
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 2rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.fieldsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.fieldContainer {
+  width: 100%;
+  display: flex;
+}
+
+.info {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.reservationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.fieldContainer label {
+  font-weight: bold;
+  margin-top: 8px;
+  width: 20%;
+}
+
+.fieldContainer input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+  .reservationCard {
+    margin-top: 1rem;
+  }
+
+  .fieldsContainer {
+    margin-top: 1rem;
+  }
+
+  .fieldContainer {
+    flex-direction: column;
+  }
+
+  .fieldContainer label {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .buttonContainer button {
+    margin-top: 8px;
+    margin-left: 0;
+  }
+}

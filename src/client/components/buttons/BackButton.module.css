@@ -1,0 +1,9 @@
+.backButton {
+  margin-bottom: 2rem;
+}
+
+.backIcon {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-right: 8px;
+}

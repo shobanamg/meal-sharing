@@ -1,0 +1,52 @@
+.successModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.successModalContent {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.successModalMessage {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.successModalClose {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.buttonContainer button {
+  background-color: #ffab00;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 16px;
+}

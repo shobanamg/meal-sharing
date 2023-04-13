@@ -1,11 +1,10 @@
-const express = require('express')
-const path = require('path')
-const mealRoute = require('./routes/mealRoute')
-const reservationRoute = require('./routes/reservationRoute')
-const reviewRoute = require('./routes/reviewRoute')
+const express = require("express");
+const path = require("path");
+const mealRoute = require("./routes/mealRoute");
+const reservationRoute = require("./routes/reservationRoute");
+const reviewRoute = require("./routes/reviewRoute");
 const app = express();
 const router = express.Router();
-
 
 const buildPath = path.join(__dirname, "../../dist");
 const cors = require("cors");
@@ -13,7 +12,6 @@ const cors = require("cors");
 // For week4 no need to look into this!
 // Serve the built client html
 app.use(express.static(buildPath));
-
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +27,7 @@ router.use("/reviews", reviewRoute);
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
 } else {
-  throw "API_PATH is not set. Remember to set it in your .env file"
+  throw "API_PATH is not set. Remember to set it in your .env file";
 }
 
 // for the frontend. Will first be covered in the react class
