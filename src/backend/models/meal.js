@@ -198,6 +198,7 @@ const getMeals = async (searchParams) => {
     query.limit(limit);
   }
 
+  query.toSQL();
   const meals = await query;
 
   // For each meal, calculate the number of available spots
