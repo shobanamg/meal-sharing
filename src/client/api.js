@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = /api;
+const BASE_URL = "/api";
 
 export const fetchMeals = async () => {
   return axios
